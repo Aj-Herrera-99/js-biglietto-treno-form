@@ -17,18 +17,31 @@ const lname = document.getElementById("lname");
 const km = document.getElementById("km");
 const eta = document.getElementById("eta");
 
+const priceText = document.getElementById("final-price");
+
 //* other variables
 const pricePerKm = .21; 
-let finalPrice;
 
+//* eventListeners
+ticketForm.addEventListener("submit", handleSubmit)
 
-//* functions
+//* eventHandlers
+function handleSubmit(e) {
+    e.preventDefault();
+    // variabile per il risultato
+    const finalPrice = calcPrice(km.value, eta.value);
+    // inserisco come innerText di un elemento il valore di finalPrice
+    priceText.innerText = finalPrice.toFixed(2) + "€";
+} 
+
+//! functions
 /**
  * 
- * @param {number} basePrice 
+ * @param {number} km 
  * @param {number} discount 
  * @returns {number}
  */
-function calcPrice(basePrice, discount){
+function calcPrice(km, discount){
+    const basePrice = km * pricePerKm;
     return (basePrice * (100 - discount)) / 100;
 }
