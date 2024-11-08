@@ -11,17 +11,17 @@ Sulla base di queste informazioni dovrà calcolare il prezzo totale del bigliett
 
 // DOM elements selection
 const ticketForm = document.getElementById("ticket-info");
-
 const fname = document.getElementById("fname");
 const lname = document.getElementById("lname");
 const km = document.getElementById("km");
 const eta = document.getElementById("eta");
-
-let isTicketGenerated = false;
+const priceKmText = document.getElementById("price-km-text");
 // other variables
 const pricePerKm = 0.21;
 const alphanum = "abcdefghijklmnopqrstuvwyxz0123456789";
+let isTicketGenerated = false;
 
+priceKmText.innerHTML += pricePerKm + "€"
 //* eventListeners
 ticketForm.addEventListener("submit", handleSubmit);
 ticketForm.addEventListener("reset", handleReset);
@@ -46,7 +46,7 @@ function handleSubmit(e) {
     ticketForm.insertAdjacentHTML(
         "afterend",
         `
-        <div id="ticket" class="border border-3 border-danger rounded-3 p-3">
+        <div id="ticket" class="border border-5 border-danger bg-danger-subtle rounded-3 p-3">
             <div class="d-flex justify-content-between align-items-center">
                 <h2 class="h1">${finalPrice.toFixed(2) + "€"}</h2>
                 <div>
