@@ -21,6 +21,7 @@ const priceText = document.getElementById("final-price");
 
 // other variables
 const pricePerKm = .21; 
+const alphanum = "abcdefghijklmnopqrstuvwyxz0123456789";
 
 //* eventListeners
 ticketForm.addEventListener("submit", handleSubmit)
@@ -28,9 +29,13 @@ ticketForm.addEventListener("submit", handleSubmit)
 //* eventHandlers
 function handleSubmit(e) {
     e.preventDefault();
-    // variabile per il risultato
+    // variabili
     const finalPrice = calcPrice(km.value, eta.value);
-    // inserisco come innerText di un elemento il valore di finalPrice
+    const ticketCode = randomStr(6, alphanum);
+    const carriageNumber = getRndInteger(1, 8);
+    const seatNumber = getRndInteger(1, 200);
+    const trainNumber = getRndInteger(1, 20);
+    // genero html biglietto 
     ticketForm.insertAdjacentHTML("afterend", 
         `
         <div class="border border-1 border-dark rounded-3 p-3">
@@ -38,7 +43,7 @@ function handleSubmit(e) {
                 <h2>${finalPrice.toFixed(2) + "€"}</h2>
                 <div>
                     <h3 class="text-uppercase">codice biglietto</h3>
-                    <h2 id="ticket-code" class="text-uppercase">alphanumeric</h2>
+                    <h2 class="text-uppercase">${ticketCode}</h2>
                 </div>
             </div>
             <div class="d-flex justify-content-between">
@@ -54,11 +59,11 @@ function handleSubmit(e) {
                 </div>
                 <div class="d-flex flex-column">
                     <span>DATA PARTENZA</span>
-                    <span id="ticket-date"></span>
+                    <span id="ticket-date">XX</span>
                 </div>
                 <div class="d-flex flex-column">
                     <span>TRENO</span>
-                    <span id="train-number"></span>
+                    <span>${trainNumber}</span>
                 </div>
             </div>
             <table class="border border-1 border-danger w-100">
@@ -72,8 +77,9 @@ function handleSubmit(e) {
                 <tr>
                     <td>${fname.value} ${lname.value}</td>
                     <td>${eta.options[eta.selectedIndex].innerHTML}</td>
-                    <td id="carriage-number"></td>
-                    <td id="seat-number"></td>
+                    <td></td>
+                    <td>${carriageNumber}</td>
+                    <td>${seatNumber}</td>
 
                 </tr>
             </table>
@@ -93,4 +99,23 @@ console.log();
 function calcPrice(km, discount){
     const basePrice = km * pricePerKm;
     return (basePrice * (100 - discount)) / 100;
+}
+
+/**
+ * 
+ * @param {number} len //lunghezza codice
+ * @param {string} arr //stringa dei caratteri del codice 
+ */
+
+function randomStr(len, arr) {
+    let ans = '';
+    for (let i = len; i > 0; i--) {
+        ans +=
+            arr[(Math.floor(Math.random() * arr.length))];
+    }
+    return ans;
+}
+
+function getRndInteger(min, max){
+    return Math.floor(Math.random() * (max - min + 1)) + 1;
 }
