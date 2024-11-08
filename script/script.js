@@ -17,14 +17,14 @@ const lname = document.getElementById("lname");
 const km = document.getElementById("km");
 const eta = document.getElementById("eta");
 
-const priceText = document.getElementById("final-price");
-
+let isTicketGenerated = false;
 // other variables
 const pricePerKm = 0.21;
 const alphanum = "abcdefghijklmnopqrstuvwyxz0123456789";
 
 //* eventListeners
 ticketForm.addEventListener("submit", handleSubmit);
+ticketForm.addEventListener("reset", handleReset);
 
 //* eventHandlers
 function handleSubmit(e) {
@@ -34,41 +34,48 @@ function handleSubmit(e) {
     const ticketCode = randomStr(6, alphanum);
     const carriageNumber = getRndInteger(1, 8);
     const seatNumber = getRndInteger(1, 200);
-    const trainNumber = getRndInteger(1, 20);
+    const trainNumber = getRndInteger(1000, 9999);
+    // controllo se ci sono biglietti gia generati
+    if (isTicketGenerated) {
+        const ticket = document.getElementById("ticket");
+        console.log(ticket);
+        ticket.remove();
+    }
     // genero html biglietto
+    isTicketGenerated = true;
     ticketForm.insertAdjacentHTML(
         "afterend",
         `
-        <div class="border border-1 border-dark rounded-3 p-3">
+        <div id="ticket" class="border border-3 border-danger rounded-3 p-3">
             <div class="d-flex justify-content-between align-items-center">
-                <h2>${finalPrice.toFixed(2) + "€"}</h2>
+                <h2 class="h1">${finalPrice.toFixed(2) + "€"}</h2>
                 <div>
-                    <h3 class="text-uppercase">codice biglietto</h3>
+                    <h3 class="text-uppercase text-muted">codice biglietto</h3>
                     <h2 class="text-uppercase">${ticketCode}</h2>
                 </div>
             </div>
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between my-2">
                 <div class="d-flex flex-column">
                     <span>PARTENZA</span>
-                    <span>MILANO CENT.</span>
-                    <span>00:00</span>
+                    <span class="fw-bold">MILANO CENT.</span>
+                    <span class="fw-bold">00:00</span>
                 </div>
                 <div class="d-flex flex-column">
                     <span>ARRIVO</span>
-                    <span>ROMA TIB.</span>
-                    <span>00:00</span>
+                    <span class="fw-bold">ROMA TIB.</span>
+                    <span class="fw-bold">00:00</span>
                 </div>
                 <div class="d-flex flex-column">
                     <span>DATA PARTENZA</span>
-                    <span id="ticket-date">XX</span>
+                    <span class="fw-bold">XX</span>
                 </div>
                 <div class="d-flex flex-column">
                     <span>TRENO</span>
-                    <span>${trainNumber}</span>
+                    <span class="fw-bold">${trainNumber}</span>
                 </div>
             </div>
-            <table class="border border-1 border-danger w-100">
-                <tr>
+            <table class="w-100 p-3">
+                <tr class="text-bg-danger rounded-3">
                     <th class="w-25">NOME PASSEGGERO</th>
                     <th>TIPO</th>
                     <th>EXTRA</th>
@@ -87,8 +94,20 @@ function handleSubmit(e) {
         </div>
         `
     );
+    // cancello input form
+    fname.value = "";
+    lname.value = "";
+    km.value = "";
+    eta.value = "";
 }
 
+function handleReset() {
+    if(isTicketGenerated){
+        const ticket = document.getElementById("ticket");
+        ticket.remove();
+        isTicketGenerated = false;
+    }
+}
 //! functions
 /**
  *
