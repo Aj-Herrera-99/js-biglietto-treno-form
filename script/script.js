@@ -8,7 +8,8 @@ Sulla base di queste informazioni dovrà calcolare il prezzo totale del bigliett
 - va applicato uno sconto del 20% per i minorenni
 - va applicato uno sconto del 40% per gli over 65.
  */
-// variables initialization and DOM elements selection
+
+//* DOM elements selection
 const ticketForm = document.getElementById("ticket-info");
 
 const fname = document.getElementById("fname");
@@ -16,5 +17,18 @@ const lname = document.getElementById("lname");
 const km = document.getElementById("km");
 const eta = document.getElementById("eta");
 
-const submit = document.getElementById("submit");
-const reset = document.getElementById("reset");
+//* other variables
+const pricePerKm = .21; 
+let finalPrice;
+
+
+//* functions
+/**
+ * 
+ * @param {number} basePrice 
+ * @param {number} discount 
+ * @returns {number}
+ */
+function calcPrice(basePrice, discount){
+    return (basePrice * (100 - discount)) / 100;
+}
