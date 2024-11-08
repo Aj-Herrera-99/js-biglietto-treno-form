@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <main class="container my-5">
-        <form id="ticket-info" action="" class="text-bg-danger p-5 rounded-4 row row-gap-5 justify-content-between">
+    <main class="container">
+        <form id="ticket-info" action="" class="text-bg-danger p-5 my-5 rounded-4 row row-gap-5 justify-content-between">
             <div class="row col-sm-6">
                 <label for="fname">Nome</label>
                 <input class="form-control" type="text" name="fname" id="fname" placeholder="Inserisci nome" required>
@@ -35,52 +35,7 @@
                 <button class="btn btn-light" id="reset" type="reset">Cancella</button>
             </div>
         </form>
-        <br>
-        <div id="final-price" class="border border-1 border-dark rounded-3 p-3">
-            <div class="d-flex justify-content-between">
-                <h3>logo</h3>
-                <div>
-                    <h3 class="text-uppercase">codice biglietto</h3>
-                    <h2 id="ticket-code" class="text-uppercase">alphanumeric</h2>
-                </div>
-            </div>
-            <div class="d-flex justify-content-between">
-                <div class="d-flex flex-column">
-                    <span>PARTENZA</span>
-                    <span>MILANO CENT.</span>
-                    <span>00:00</span>
-                </div>
-                <div class="d-flex flex-column">
-                    <span>ARRIVO</span>
-                    <span>ROMA TIB.</span>
-                    <span>00:00</span>
-                </div>
-                <div class="d-flex flex-column">
-                    <span>DATA PARTENZA</span>
-                    <span id="ticket-date"></span>
-                </div>
-                <div class="d-flex flex-column">
-                    <span>TRENO</span>
-                    <span id="train-number"></span>
-                </div>
-            </div>
-            <table class="border border-1 border-danger w-100">
-                <tr>
-                    <th class="w-50">NOME PASSEGGERO</th>
-                    <th>TIPO</th>
-                    <th>EXTRA</th>
-                    <th>CARROZZA</th>
-                    <th>POSTO</th>
-                </tr>
-                <tr>
-                    <td id="passenger-name" class="w-50"></td>
-                    <td id="passenger-type"></td>
-                    <td id="carriage-number"></td>
-                    <td id="seat-number"></td>
 
-                </tr>
-            </table>
-        </div>
     </main>
     <!-- script -->
      <script src="script/script.js"></script>
