@@ -8,24 +8,36 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <form id="ticket-info" action="">
-        <label for="fname">Nome</label>
-        <input type="text" name="fname" id="fname" placeholder="Inserisci nome" required>
-        <label for="lname">Cognome</label>
-        <input type="text" name="lname" id="lname" placeholder="Inserisci cognome" required>
-        <label for="km">Km da percorrere</label>
-        <input type="text" name="km" id="km" placeholder="Inserisci i Km" required>
-        <label for="eta">Fascia età</label>
-        <select name="eta" id="eta">
-            <option value="">Adulto</option>
-            <option value="20">Junior</option>
-            <option value="40">Senior</option>
-        </select>
-        <input id="submit" type="submit" value="Conferma">
-        <input id="reset" type="reset" value="Cancella">
-    </form>
-    <br>
-    <p id="final-price"></p>
+    <main class="container my-5">
+        <form id="ticket-info" action="" class="text-bg-danger p-5 rounded-4 row row-gap-5 justify-content-between">
+            <div class="row col-sm-6">
+                <label for="fname">Nome</label>
+                <input class="form-control" type="text" name="fname" id="fname" placeholder="Inserisci nome" required>
+            </div>
+            <div class="row col-sm-6">
+                <label for="lname">Cognome</label>
+                <input class="form-control" type="text" name="lname" id="lname" placeholder="Inserisci cognome" required>
+            </div>
+            <div class="row col-sm-6">
+                <label for="km">Km da percorrere</label>
+                <input class="form-control" type="text" name="km" id="km" placeholder="Inserisci i Km" required>
+            </div>
+            <div class="row col-sm-6">
+                <label for="eta">Fascia età</label>
+                <select class="form-select" name="eta" id="eta">
+                    <option value="">Adulto</option>
+                    <option value="20">Junior</option>
+                    <option value="40">Senior</option>
+                </select>
+            </div>
+            <div class="d-flex flex-wrap gap-3">
+                <button class="btn btn-light" id="submit" type="submit">Conferma</button>
+                <button class="btn btn-light" id="reset" type="reset">Cancella</button>
+            </div>
+        </form>
+        <br>
+        <p id="final-price"></p>
+    </main>
     <!-- script -->
      <script src="script/script.js"></script>
 </body>

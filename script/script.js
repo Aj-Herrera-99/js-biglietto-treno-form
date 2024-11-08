@@ -9,7 +9,7 @@ Sulla base di queste informazioni dovrà calcolare il prezzo totale del bigliett
 - va applicato uno sconto del 40% per gli over 65.
  */
 
-//* DOM elements selection
+// DOM elements selection
 const ticketForm = document.getElementById("ticket-info");
 
 const fname = document.getElementById("fname");
@@ -19,7 +19,7 @@ const eta = document.getElementById("eta");
 
 const priceText = document.getElementById("final-price");
 
-//* other variables
+// other variables
 const pricePerKm = .21; 
 
 //* eventListeners
