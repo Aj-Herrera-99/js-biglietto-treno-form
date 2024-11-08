@@ -8,6 +8,22 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <form id="ticket-info" action="">
+        <label for="fname">Nome</label>
+        <input type="text" name="fname" id="fname" placeholder="Inserisci nome" required>
+        <label for="lname">Cognome</label>
+        <input type="text" name="lname" id="lname" placeholder="Inserisci cognome" required>
+        <label for="km">Km da percorrere</label>
+        <input type="text" name="km" id="km" placeholder="Inserisci i Km" required>
+        <label for="eta">Fascia età</label>
+        <select name="eta" id="eta">
+            <option value="">Adulto</option>
+            <option value="20">Junior</option>
+            <option value="40">Senior</option>
+        </select>
+        <input type="submit" value="Conferma">
+        <input type="reset" value="Cancella">
+    </form>
     <!-- script -->
      <script src="script/script.js"></script>
 </body>
